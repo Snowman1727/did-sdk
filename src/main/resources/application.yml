@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: @profile.env@
+  application:
+    name: didSdk
+  jackson:
+    time-zone: GMT+8
+
+mybatis-plus:
+  global-config:
+    field-strategy: 1  #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    db-config:
+      id-type: AUTO  #0:数据库ID自增   1:用户输入id  2:全局唯一id(IdWorker)  3:全局唯一ID(uuid)
+      #table-prefix: fms_   #表前缀
+  configuration:
+    mapper-locations: classpath*:/mapper/*Mapper.xml
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+    cache-enabled: false
+    call-setters-on-nulls: true # true 当查询结果字段值为空时，也返回此字段； false 不返回此字段
+
+chain:
+  url: http://139.198.43.151:32384
+  code: abcd
+  privateKey: 56ada162e26680b6640b9368e29c794f0dddcfbaaa13867ece775db4c0f1f19e

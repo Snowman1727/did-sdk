@@ -1,0 +1,72 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql.middleware-test.svc.cluster.local:3306/youxiang?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: youxiang
+    password: TeleInfo@12138
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+  #redis 配置
+  redis:
+#    database: 5  #Redis数据库索引（默认为0）
+    host: redis.middleware-test.svc.cluster.local
+    port: 6379 #Redis服务器连接端口
+    timeout: 5000MS  # 连接超时时间 单位 ms（毫秒）
+    jedis:
+      pool:
+        min-idle: 10
+        max-idle: 20
+        max-wait: -1ms
+        max-active: 200
+
+danggui:
+  filepath:
+    image: "/upload/img/"
+  message:
+    url: "http://localhost:8080"
+
+
+baidu:
+  ocr:
+    successUrl: "http://sdk-certification.test.idx.space/cert/person-success?token="
+    failedUrl: "http://sdk-certification.test.idx.space/cert/person-success?token="
+
+qrcode:
+  url: "http://danggui.test.idx.space/static/"
+
+company:
+  certify:
+    url: "http://sdk-certification.test.idx.space/cert/enterprise-cert?token="
+  baiduOcr:
+    callbackUrl: "http://sdk-certification.test.idx.space/cert/authing-result?verifyToken="
+
+teleInfo:
+  did: did:bid:abcd:ss7LGBdr8d0aCJTcd0yAqahEgCKb1/Mg==
+  bbs:
+    privateKey: 6sRCGXiJ31xii9p4wCmAq15Nfd6WsRZvY9QPuSxPHh4C
+    publicKey: tBvMRrmULYhGQwbN1QzdzbqaC3iDQA5fGBcSHxmPfs1dDT5pHUw5VkfbX4Lu9RHdWp6hJdnSZBL5hfAj4P4XNUzMp2iycj4YsLBVLkxw9Bwx64B5yzg4Z88DSZfL7v6WLpm
+
+
+shortUrlPrefix: "http://u.test.idx.space/"
+
+phone:
+  encryptKey: "38350efef0a6a5b0961ecc1422a0c488f758f709db7b6abfe62efe4b67c7da07"
+
+
+project:
+  domain: "http://danggui.test.idx.space"
+
+vp:
+  domain: http://youxiang-grpc.test.idx.space
